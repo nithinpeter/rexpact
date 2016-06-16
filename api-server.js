@@ -4,10 +4,10 @@ var bodyParser = require('body-parser');
 var db = require('./db');
 
 var url;
-if(process.env.NODE_ENV == 'production')
-    url = 'mongodb://' + process.env.DB_USER_NAME + ':'+ process.env.DB_PASSWORD + '@ds011251.mlab.com:11251/mallujunkies';
-else
-    url = 'mongodb://localhost:27017/mallunjunkies';
+// if(process.env.NODE_ENV == 'production')
+//     url = 'mongodb://' + process.env.DB_USER_NAME + ':'+ process.env.DB_PASSWORD + '@ds011251.mlab.com:11251/mallujunkies';
+// else
+    url = 'mongodb://localhost:27017/dev';
     
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // support json encoded bodies
@@ -22,6 +22,7 @@ app.all('*', function(req, res, next) {
 app.use('/api/movies', require('./api/movies'));
 app.use('/api/info', require('./api/info'));
 app.use('/api/session', require('./api/session'));
+app.use('/api/dev', require('./api/dev'));
 
 // Connect to Mongo on start
 db.connect(url, function (err) {

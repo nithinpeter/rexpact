@@ -4,10 +4,17 @@ class Home extends Component {
     
     constructor(props) {
         super(props);
+        
+        this.state = {
+            text: ''
+        }
     }
     
     render() {
-        return <div>Home</div>    
+        return <div>
+            <h2>Home</h2>
+            
+        </div>    
     }
 }
 
